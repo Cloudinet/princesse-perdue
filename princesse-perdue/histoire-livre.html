@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La petite princesse perdue</title>
+  <style>
+	body {
+	  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+	  background: url('fond.jpg') no-repeat fixed center;
+	  background-size: cover;
+	  color: #444;
+	  margin: 0;
+	  padding: 20px;
+	}
+
+	h1 {
+	  text-align: center;
+	  color: #e75480;
+	  font-size: 2.5em;
+	  margin-bottom: 20px;
+	}
+
+	.book {
+	  max-width: 800px;
+	  margin: auto;
+	  padding: 20px;
+	  background: #fffafc;
+	  border-radius: 20px;
+	  border: 8px double #ffc0cb;
+	  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+	  perspective: 1200px;
+	  transform-style: preserve-3d;
+	}
+
+	.page {
+	  display: none;
+	  opacity: 0;
+	  transition: opacity 0.6s ease;
+	}
+
+	.page.active {
+	  display: block;
+	  opacity: 1;
+	}
+
+	.page-content {
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	  gap: 30px;
+	  flex-wrap: wrap;
+	}
+
+	.text-block {
+	  flex: 1 1 55%;
+	}
+
+	.image-block {
+	  flex: 1 1 40%;
+	  text-align: right;
+	}
+
+	.image-block img,
+	.image-container img {
+	  max-width: 100%;
+	  height: auto;
+	  border-radius: 15px;
+	  border: 4px solid #ffc0cb;
+	  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+	  transition: transform 0.3s ease;
+	}
+
+	.image-block img:hover {
+	  transform: scale(1.05);
+	}
+
+	.image-container {
+	  text-align: center;
+	  margin: 25px 0;
+	}
+
+	.image-container img.couverture {
+	  max-width: 57.3%;
+	}
+
+	.dialogue {
+	  font-style: italic;
+	  margin: 15px 20px;
+	  padding: 10px;
+	  background: #ffe4ef;
+	  border-left: 5px solid #e75480;
+	  border-radius: 10px;
+	  color: #333;
+	}
+
+	.navigation {
+	  text-align: center;
+	  margin-top: 20px;
+	}
+
+	button {
+	  background-color: #e75480;
+	  color: white;
+	  border: none;
+	  padding: 10px 20px;
+	  font-size: 1.2em;
+	  border-radius: 10px;
+	  cursor: pointer;
+	  margin: 0 10px;
+	  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+	}
+
+	button:hover {
+	  background-color: #d63c6c;
+	}
+
+	#toggle-music {
+	  position: fixed;
+	  top: 20px;
+	  left: 20px;
+	  background-color: #ffc0cb;
+	  border: none;
+	  border-radius: 50%;
+	  padding: 10px;
+	  font-size: 1.2em;
+	  cursor: pointer;
+	  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+	  z-index: 1000;
+	}
+
+	#toggle-music:hover {
+	  background-color: #e75480;
+	  color: white;
+	}
+
+	@keyframes fadeInImage {
+	  from { opacity: 0; transform: scale(0.9); }
+	  to { opacity: 1; transform: scale(1); }
+	}
+	
+	.image-block img,
+	.image-container img {
+	  animation: fadeInImage 1.5s ease-out;
+	  animation-fill-mode: both;
+	}
+
+  </style>
+</head>
+<body>
+  <h1>🌸 La petite princesse perdue 🌸</h1>
+  <div class="book">
+
+	<audio id="musique" loop>
+	  <source src="musique.mp3" type="audio/mpeg">
+	</audio>
+	<button id="toggle-music" title="Activer/Désactiver la musique" aria-label="Contrôle de la musique">🔈</button>
+
+	<div class="page active">
+	  <div class="image-container">
+		<img class="couverture" src="couverture.png" alt="Couverture du conte">
+	  </div>
+	</div>
+
+	<div class="page">
+	  <div class="page-content">
+		<div class="text-block">
+		  <p>Il était une fois une petite princesse qui s’était égarée dans la grande forêt.</p>
+		  <p class="dialogue">— « Au secours, au secours ! Je suis perdue ! »</p>
+		</div>
+		<div class="image-block">
+		  <img src="princesse.png" alt="La petite princesse perdue dans la forêt">
+		</div>
+	  </div>
+	</div>
+
+
+	<div class="page">
+	  <div class="page-content">
+		<div class="text-block">
+		  <p>Tout à coup, une biche aux yeux doux apparut.</p>
+		  <p class="dialogue">— « Bonjour, gente demoiselle. Vous êtes perdue ? »<br>
+		  — « Oh, bonjour Madame la Biche. Oui, je suis perdue. Je suis la princesse du château très, très lointain. Pourriez-vous m’indiquer le chemin ? »<br>
+		  — « Une princesse ! Enchantée ! Le château est par là-bas… mais attention, c’est très, très loin ! »<br>
+		  — « Merci beaucoup, Madame la Biche ! Au revoir ! »</p>
+		</div>
+		<div class="image-block">
+		  <img src="biche.png" alt="La princesse rencontre la biche dans la forêt">
+		</div>
+	  </div>
+	</div>
+
+
+	<div class="page">
+	  <div class="page-content">
+		<div class="text-block">
+		  <p>Elle se remit en marche. Elle marcha, marcha… mais bientôt, les arbres l’entouraient de toutes parts et elle ne voyait plus rien. Alors, elle cria encore :</p>
+		  <p class="dialogue">— « Au secours, au secours ! Je suis perdue ! »</p>
+		  <p>Un hibou, perché sur une branche, l’entendit et descendit en voletant.</p>
+		  <p class="dialogue">— « Bonjour Princesse ! Que faites-vous ici ? »<br>
+		  — « Oh, vous me connaissez ? Je voudrais rentrer au château, mais je suis perdue… »<br>
+		  — « Non, je ne vous connais pas. Mais à votre belle robe, j’ai deviné que vous êtes une princesse ! Le château est par là-bas… mais attention, c’est très, très loin ! »<br>
+		  — « Merci, Monsieur le Hibou ! Au revoir ! »</p>
+		</div>
+		<div class="image-block">
+		  <img src="hibou.png" alt="La princesse rencontre le hibou">
+		</div>
+	  </div>
+	</div>
+
+
+	<div class="page">
+	  <div class="page-content">
+		<div class="text-block">
+		  <p>Et la princesse reprit son chemin. Elle marcha, marcha encore, mais la forêt semblait sans fin. Alors, elle s’écria une troisième fois :</p>
+		  <p class="dialogue">— « Au secours, au secours ! Je suis perdue ! »</p>
+		  <p>Cette fois, un cheval majestueux arriva en trottant.</p>
+		  <p class="dialogue">— « Princesse ! »<br>
+		  — « Maximilien ! Quelle joie de te retrouver ! »</p>
+		</div>
+		<div class="image-block">
+		  <img src="cheval.png" alt="La princesse retrouve le cheval Maximilien">
+		</div>
+	  </div>
+	</div>
+
+
+	<div class="page">
+	  <div class="page-content">
+		<div class="text-block">
+		<br>
+		  <p>Alors, Maximilien la prit sur son dos et la ramena au château. Là, le roi et la reine l’attendaient avec impatience.</p>
+		  <p class="dialogue">— « Papa ! Maman ! »<br>
+		  — « Notre princesse ! »</p>
+		  <p>Ils la serrèrent dans leurs bras, soulagés et heureux de la retrouver.  
+		  Et ce fut un très beau câlin…</p>
+		  <br><br><br>
+		  <h2>🌸 Fin 🌸</h2>
+		</div>
+		<div class="image-block">
+		  <img src="chateau.png" alt="La princesse retrouve ses parents au château">
+		</div>
+	  </div>
+	</div>
+
+
+    <div class="navigation">
+      <button onclick="prevPage()">←</button>
+      <button onclick="nextPage()">→</button>
+    </div>
+  </div>
+
+	<script>
+	  const audio = document.getElementById("musique");
+	  const toggleBtn = document.getElementById("toggle-music");
+	  const pages = document.querySelectorAll(".page");
+	  let currentPage = 0;
+
+	  function lancerMusique() {
+		audio.volume = 0.3;
+		audio.play();
+		document.removeEventListener("click", lancerMusique);
+		document.removeEventListener("keydown", lancerMusique);
+	  }
+
+	  document.addEventListener("click", lancerMusique);
+	  document.addEventListener("keydown", lancerMusique);
+
+	  toggleBtn.addEventListener("click", () => {
+		if (audio.paused) {
+		  audio.play();
+		  toggleBtn.textContent = "🔈";
+		} else {
+		  audio.pause();
+		  toggleBtn.textContent = "🔇";
+		}
+	  });
+
+	  function showPage(index) {
+	    pages.forEach((page, i) => {
+		page.classList.remove("active");
+	  	page.setAttribute("aria-hidden", "true");
+	    });
+	    pages[index].classList.add("active");
+	    pages[index].setAttribute("aria-hidden", "false");
+	    currentPage = index;
+	  }
+
+	  function nextPage() {
+		if (currentPage < pages.length - 1) {
+		  showPage(currentPage + 1);
+		}
+	  }
+
+	  function prevPage() {
+		if (currentPage > 0) {
+		  showPage(currentPage - 1);
+		}
+	  }
+
+	  document.addEventListener("keydown", function (e) {
+		if (e.key === "ArrowRight") nextPage();
+		else if (e.key === "ArrowLeft") prevPage();
+	  });
+
+	  showPage(currentPage);
+	</script>
+
+</body>
+</html>
